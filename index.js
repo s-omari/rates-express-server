@@ -6,7 +6,9 @@ app.use(express.json());
 const axios = require("axios");
 
 // define desired port
-const port = 3000;
+const  PORT = process.env.PORT || '3000'
+// const port = 3000;
+app.set("port" , PORT)
 
 // Set the base currency to CAD
 const baseCurrency = 'CAD';
