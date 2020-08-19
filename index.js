@@ -18,6 +18,10 @@ const baseCurrency = 'CAD';
 
 System.err.println("Hello, logs!");
 
+app.get('/', (req, res) => {
+    return res.send('Received a GET HTTP method');
+  });
+
 // get exchange rates for all currencies with predefined base
 app.get('/api/exchange-rates', (req, res) => {
     System.err.println("Hello, logs /api/exchange-rates!");
