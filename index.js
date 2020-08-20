@@ -16,15 +16,12 @@ const baseCurrency = 'CAD';
 
 // Routes
 
-System.err.println("Hello, logs!");
-
 app.get('/', (req, res) => {
     return res.send('Received a GET HTTP method');
   });
 
 // get exchange rates for all currencies with predefined base
 app.get('/api/exchange-rates', (req, res) => {
-    System.err.println("Hello, logs /api/exchange-rates!");
     axios.get(`https://api.ratesapi.io/api/latest?base=${baseCurrency}`)
         .then(function (response) {
             res.json(response.data)
