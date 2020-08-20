@@ -1,28 +1,24 @@
 const express = require('express');
 const app = express();
-app.use(express.json());
-
-// to perform HTTP request
 const axios = require("axios");
 
-// define desired port
-const  PORT = process.env.PORT || '3000'
-// const port = 3000;
-app.set("port" , PORT)
+app.use(express.json());
 
+
+// Set desired port
+const  PORT = process.env.PORT || '3000'
+app.set("port" , PORT)
 // Set the base currency to CAD
 const baseCurrency = 'CAD';
-
+const ratesBaseURL = 'https://api.ratesapi.io/api/latest'
 
 // Routes
-
 app.get('/', (req, res) => {
     return res.send('A simple express api :)   '+ 'github : s-omari/rates-express-server');
   });
 
-// get exchange rates for all currencies with predefined base
 app.get('/api/exchange-rates', (req, res) => {
-    axios.get(`https://api.ratesapi.io/api/latest?base=${baseCurrency}`)
+    axios.get(`${ratesBaseURL}?base=${baseCurrency}`)
         .then(function (response) {
             res.json(response.data)
         }).catch(function (error) {
@@ -31,10 +27,9 @@ app.get('/api/exchange-rates', (req, res) => {
 });
 
 app.get('/api/exchange-rate/:symbols', (req, res) => {
-    let url = `https://api.ratesapi.io/api/latest?base=${baseCurrency}&symbols=${req.params.symbols}`;
+    let url = `${ratesBaseURL}?base=${baseCurrency}&symbols=${req.params.symbols}`;
     axios.get(url)
         .then(function (response) {
-            // console.log(`rate for ${req.params.base}`)
             res.json(response.data)
         }).catch(function (error) {
             res.json("Error occured!")
@@ -42,12 +37,9 @@ app.get('/api/exchange-rate/:symbols', (req, res) => {
 })
 
 app.get('/api/exchange-rate/:symbols/:base', (req, res) => {
-
-    let url = `https://api.ratesapi.io/api/latest?symbols=${req.params.symbols}&base=${req.params.base}`;
-    // console.log(url)
+    let url = `${ratesBaseURL}?symbols=${req.params.symbols}&base=${req.params.base}`;
     axios.get(url)
         .then(function (response) {
-            // console.log(`rate for ${req.params.base}`)
             res.json(response.data)
         }).catch(function (error) {
             res.json("Error occured!")
