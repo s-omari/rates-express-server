@@ -17,7 +17,7 @@ const baseCurrency = 'CAD';
 // Routes
 
 app.get('/', (req, res) => {
-    return res.send('Received a GET HTTP method');
+    return res.send('A simple express api :)   '+ 'github : s-omari/rates-express-server');
   });
 
 // get exchange rates for all currencies with predefined base
@@ -55,6 +55,6 @@ app.get('/api/exchange-rate/:symbols/:base', (req, res) => {
 })
 
 
-app.listen(process.env.PORT || port, function(){
+app.listen(process.env.PORT || PORT, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
   });
