@@ -31,6 +31,19 @@ example:
 - api/exchange-rate/:symbol/:base => returns exchange rate for provided curency (symnol) with provided base currency (base)
 
 
+## Deployment
+Deployed to Heroku
+The live api can be found at https://exchange-rates-express.herokuapp.com
 
+## Usage
+
+- Get CAD exchange rates for all currencies 
+https://exchange-rates-express.herokuapp.com/api/exchange-rates 
+
+- Get CAD exchange rates for a currency. ex. USD
+https://exchange-rates-express.herokuapp.com/api/exchange-rate/USD
+
+- Get exchange rates for a currency and select base currency ex. USD  with base GBP
+https://exchange-rates-express.herokuapp.com/api/exchange-rate/USD/GBP 
 
 
