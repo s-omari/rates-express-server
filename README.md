@@ -46,4 +46,3 @@ https://exchange-rates-express.herokuapp.com/api/exchange-rate/USD
 - Get exchange rates for a currency and select base currency ex. USD  with base GBP
 https://exchange-rates-express.herokuapp.com/api/exchange-rate/USD/GBP 
 
-
